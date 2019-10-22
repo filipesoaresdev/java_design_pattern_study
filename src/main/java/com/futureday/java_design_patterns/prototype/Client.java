@@ -16,6 +16,13 @@ import javafx.geometry.Point3D;
  * 3 - These classes override the clone() method as public to generate a new object of the
  * same class with all the attributes restarted
  * 4 - clone() may throws CloneNotSupportedException if not supported
+ * 5 - can be a shallow copy or a deep copy
+ * 5.1 - shallow copy is the simplest, where we use the default copy().
+ * only coping all the fields, even
+ * the referenced object. This can be a problem because we are using the same 
+ * reference in two different instancies.
+ * 5.2 - deep copy that resolve the problem of the shared reference. We 
+ * override the copy method, copying manually each object.
  * 
  * @author FilipeSoares-STI
  */
