@@ -1,0 +1,43 @@
+package com.futureday.java_design_patterns.behavioral.composite;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Directory that extends File and implements all the abstract methods 
+ * It keeps the children that can be a BinaryFile or another Directory, all 
+ * objects that extend File
+ * @author FilipeSoares-STI
+ */
+public class Directory extends File{
+    
+    private List<File> children = new ArrayList<>();
+
+    public Directory(String name) {
+        super(name);
+    }
+
+    @Override
+    public void ls() {
+        System.out.println(getName());
+        children.forEach(File::ls);
+    }
+
+    @Override
+    public void addFile(File file) {
+        children.add(file);
+    }
+
+    @Override
+    public File[] getFiles() {
+        return children.toArray(new File[children.size()]);
+    }
+
+    @Override
+    public boolean removeFile(File file) {
+        return children.remove(file);
+    }
+    
+    
+    
+}
